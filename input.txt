@@ -1,0 +1,15 @@
+init 20
+display
+alloc document.txt 3
+alloc image.jpg 5
+display
+list
+delete document.txt
+list
+display
+alloc video.mp4 8
+alloc notes.txt 2
+display
+list
+delete image.jpg
+display 
