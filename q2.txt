@@ -1,0 +1,49 @@
+1. a) How many free clusters are available after all commands are executed? 10
+b) How many contiguous free regions exist in the FAT (i.e., blocks of adjacent free 
+clusters)? 2
+c) Based on the above, does your FAT table exhibit external fragmentation? Justify your 
+answer. YES
+
+2. Allocation Behavior and File Paths 
+a) For each file (document.txt, image.jpg, video.mp4, notes.txt), list the exact sequence of 
+cluster numbers allocated. 
+document.txt：0 → 1 → 2EOF
+image.jpg：3 → 4 → 5 → 6 → 7EOF
+video.mp4：0 → 1 → 2 → 8 → 9 → 10 → 11 → 12EOF
+notes.txt：13 → 14EOF
+
+b) How does the deletion of document.txt and image.jpg affect the availability of clusters? 0-7 FREE
+
+c) Was video.mp4 allocated in a fragmented way (non-contiguous clusters)? If so, explain 
+how your FAT handles it. 
+fragmented: YES
+use first fit, take 0 1 2 then take 8 and after
+0 → 1 → 2 → 8 → 9 → 10 → 11 → 12EOF
+
+3. Efficiency & Limitations 
+a) Could you allocate a new file of size 10 clusters at the end of this sequence? Why or why 
+not? 
+YES, we have 10 free cluster.
+
+b) Even if total free clusters are ≥ 10, explain why such allocation may fail in your current 
+implementation. 
+it won't fail in my system, unless the file name already exist
+
+c) How does this reflect real-world issues with the FAT filesystem? 
+It highlights how FAT’s fragmented cluster chains cause degraded I/O performance due to increased pointer
+ chasing and disk head movement.
+
+4. Optimization Proposal 
+• Propose a concrete strategy or enhancement to improve file allocation or reduce 
+fragmentation. Choose one: 
+Justify your proposed change with respect to your simulation’s behavior and its impact on 
+performance.
+
+Keep a list of free blocks with start and size. When a file is deleted, join blocks that 
+are next to each other. This makes bigger free space and less break up.
+
+
+---
+
+Cluster:    0    1    2    3     4     5     6     7     8     9    10    11   12   13   14    15    16    17    18    19
+FAT entry: →1   →2   →8   FREE  FREE  FREE  FREE  FREE  →9   →10  →11   →12  EOF  →14  EOF   FREE  FREE  FREE  FREE  FREE

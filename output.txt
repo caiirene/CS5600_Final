@@ -1,0 +1,151 @@
+> init 20
+FAT initialized with 20 clusters
+
+> display
+FAT Table:
+Cluster 0: FREE
+Cluster 1: FREE
+Cluster 2: FREE
+Cluster 3: FREE
+Cluster 4: FREE
+Cluster 5: FREE
+Cluster 6: FREE
+Cluster 7: FREE
+Cluster 8: FREE
+Cluster 9: FREE
+Cluster 10: FREE
+Cluster 11: FREE
+Cluster 12: FREE
+Cluster 13: FREE
+Cluster 14: FREE
+Cluster 15: FREE
+Cluster 16: FREE
+Cluster 17: FREE
+Cluster 18: FREE
+Cluster 19: FREE
+
+> alloc document.txt 3
+File 'document.txt' allocated with 3 clusters
+
+> alloc image.jpg 5
+File 'image.jpg' allocated with 5 clusters
+
+> display
+FAT Table:
+Cluster 0: -> 1
+Cluster 1: -> 2
+Cluster 2: EOF
+Cluster 3: -> 4
+Cluster 4: -> 5
+Cluster 5: -> 6
+Cluster 6: -> 7
+Cluster 7: EOF
+Cluster 8: FREE
+Cluster 9: FREE
+Cluster 10: FREE
+Cluster 11: FREE
+Cluster 12: FREE
+Cluster 13: FREE
+Cluster 14: FREE
+Cluster 15: FREE
+Cluster 16: FREE
+Cluster 17: FREE
+Cluster 18: FREE
+Cluster 19: FREE
+
+> list
+Files:
+Filename: document.txt, Starting Cluster: 0, Clusters: 3
+Filename: image.jpg, Starting Cluster: 3, Clusters: 5
+
+> delete document.txt
+File 'document.txt' deleted
+
+> list
+Files:
+Filename: image.jpg, Starting Cluster: 3, Clusters: 5
+
+> display
+FAT Table:
+Cluster 0: FREE
+Cluster 1: FREE
+Cluster 2: FREE
+Cluster 3: -> 4
+Cluster 4: -> 5
+Cluster 5: -> 6
+Cluster 6: -> 7
+Cluster 7: EOF
+Cluster 8: FREE
+Cluster 9: FREE
+Cluster 10: FREE
+Cluster 11: FREE
+Cluster 12: FREE
+Cluster 13: FREE
+Cluster 14: FREE
+Cluster 15: FREE
+Cluster 16: FREE
+Cluster 17: FREE
+Cluster 18: FREE
+Cluster 19: FREE
+
+> alloc video.mp4 8
+File 'video.mp4' allocated with 8 clusters
+
+> alloc notes.txt 2
+File 'notes.txt' allocated with 2 clusters
+
+> display
+FAT Table:
+Cluster 0: -> 1
+Cluster 1: -> 2
+Cluster 2: -> 8
+Cluster 3: -> 4
+Cluster 4: -> 5
+Cluster 5: -> 6
+Cluster 6: -> 7
+Cluster 7: EOF
+Cluster 8: -> 9
+Cluster 9: -> 10
+Cluster 10: -> 11
+Cluster 11: -> 12
+Cluster 12: EOF
+Cluster 13: -> 14
+Cluster 14: EOF
+Cluster 15: FREE
+Cluster 16: FREE
+Cluster 17: FREE
+Cluster 18: FREE
+Cluster 19: FREE
+
+> list
+Files:
+Filename: image.jpg, Starting Cluster: 3, Clusters: 5
+Filename: video.mp4, Starting Cluster: 0, Clusters: 8
+Filename: notes.txt, Starting Cluster: 13, Clusters: 2
+
+> delete image.jpg
+File 'image.jpg' deleted
+
+> display 
+FAT Table:
+Cluster 0: -> 1
+Cluster 1: -> 2
+Cluster 2: -> 8
+Cluster 3: FREE
+Cluster 4: FREE
+Cluster 5: FREE
+Cluster 6: FREE
+Cluster 7: FREE
+Cluster 8: -> 9
+Cluster 9: -> 10
+Cluster 10: -> 11
+Cluster 11: -> 12
+Cluster 12: EOF
+Cluster 13: -> 14
+Cluster 14: EOF
+Cluster 15: FREE
+Cluster 16: FREE
+Cluster 17: FREE
+Cluster 18: FREE
+Cluster 19: FREE
+
